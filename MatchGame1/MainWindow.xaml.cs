@@ -44,10 +44,34 @@ namespace MatchGame1
 
             foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
             {
-                int index=random.Next(animalEmoji.Count);
-                string nextEmoji=animalEmoji[index];
-                textBlock.Text=nextEmoji;
+                int index = random.Next(animalEmoji.Count);
+                string nextEmoji = animalEmoji[index];
+                textBlock.Text = nextEmoji;
                 animalEmoji.RemoveAt(index);
+            }
+        }
+
+        TextBlock lastTextBlockClicked;
+        bool findingMatch = false;
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            if (findingMatch == false)
+            {
+                textBlock.Visibility = Visibility.Hidden;
+                lastTextBlockClicked = textBlock;
+                findingMatch = true;
+            }
+            else if (textBlock.Text == lastTextBlockClicked.Text)
+            {
+                textBlock.Visibility = Visibility.Visible;
+                findingMatch = false;
+            }
+            else
+            {
+                lastTextBlockClicked.Visibility = Visibility.Visible;
+                findingMatch = false;
             }
         }
     }
