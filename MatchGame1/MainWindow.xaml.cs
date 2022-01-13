@@ -36,7 +36,7 @@ namespace MatchGame1
                 "🐥","🐥",
                 "🐧","🐧",
                 "🐌","🐌",
-                "🐞","🐞",
+                "🦋","🦋",
                 "🦢","🦢"
             };
 
@@ -65,7 +65,7 @@ namespace MatchGame1
             }
             else if (textBlock.Text == lastTextBlockClicked.Text)
             {
-                textBlock.Visibility = Visibility.Visible;
+                textBlock.Visibility = Visibility.Hidden;
                 findingMatch = false;
             }
             else
